@@ -1,0 +1,48 @@
+.sales-table-container {
+  width: 100%;
+  overflow-x: auto; /* Para tabelas largas em telas menores */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333333;
+  background-color: #FFFFFF;
+}
+
+thead tr {
+  background-color: #F8F9FA; /* Cor de fundo do cabeçalho da tabela */
+  border-bottom: 2px solid #DEE2E6; /* Borda mais espessa para o cabeçalho */
+}
+
+th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600; /* Cabeçalho um pouco mais forte */
+  color: #495057;
+  white-space: nowrap; /* Evitar quebra de linha nos cabeçalhos */
+}
+
+tbody tr {
+  border-bottom: 1px solid #E9ECEF; /* Borda sutil entre as linhas */
+}
+
+tbody tr:last-child {
+  border-bottom: none; /* Remove a borda da última linha */
+}
+
+tbody tr:hover {
+  background-color: #F1F3F5;
+}
+
+td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  white-space: nowrap; /* Evitar quebra de linha nas células, se necessário */
+}
+
+/* Estilos específicos para colunas, se necessário */
+/* Exemplo: alinhar preço à direita */
+/* td:nth-child(6) { text-align: right; } */
+

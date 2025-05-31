@@ -1,0 +1,17 @@
+<div class="filter-bar">
+  <input type="text" placeholder="Nome do cliente" [(ngModel)]="filterCriteria.nome" (ngModelChange)="onFilterChange()">
+  <input type="text" placeholder="Cidade" [(ngModel)]="filterCriteria.cidade" (ngModelChange)="onFilterChange()">
+  <select [(ngModel)]="filterCriteria.estado" (ngModelChange)="onFilterChange()">
+    <option value="" selected>Todos os Estados</option> <!-- Opção para limpar o filtro de estado -->
+    <option value="SP">SP</option>
+    <option value="RJ">RJ</option>
+    <option value="AC">AC</option>
+    <option value="MG">MG</option>
+    <option value="PR">PR</option>
+    <option value="RS">RS</option>
+    <!-- Adicionar mais estados conforme necessário -->
+  </select>
+  <button class="search-button" (click)="onSearchClick()">
+    <i class="icon-search"></i> <!-- Ícone de lupa -->
+  </button>
+</div>

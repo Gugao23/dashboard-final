@@ -1,0 +1,44 @@
+<!-- <div class="vendas-dashboard">
+  <div class="vendas-header">
+    <h3>Resumo de Vendas</h3>
+    <div class="periodo-selector">
+      <button [class.active]="periodoAtivo === 'dia'" (click)="mudarPeriodo('dia')">Dia</button>
+      <button [class.active]="periodoAtivo === 'semana'" (click)="mudarPeriodo('semana')">Semana</button>
+      <button [class.active]="periodoAtivo === 'mes'" (click)="mudarPeriodo('mes')">Mês</button>
+    </div>
+  </div>
+
+  <div class="resumo-cards">
+    <div class="resumo-card">
+      <span class="card-label">Total de Produtos</span>
+      <span class="card-value">{{ totalProdutos }}</span>
+    </div>
+    <div class="resumo-card">
+      <span class="card-label">Total Faturado</span>
+      <span class="card-value">R$ {{ totalFaturado.toFixed(2) }}</span>
+    </div>
+  </div>
+
+  <div class="vendas-tabela">
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Quantidade</th>
+          <th>Valor Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produto of produtosVendidos">
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.quantidade }}</td>
+          <td>R$ {{ produto.valor.toFixed(2) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grafico-container">
+    <canvas id="vendasChart"></canvas>
+  </div>
+</div> -->

@@ -1,0 +1,30 @@
+<div class="sales-table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Tamanho</th>
+        <th>Cor</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of sales">
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.produto }}</td>
+        <td>{{ sale.tamanho }}</td>
+        <td>{{ sale.cor }}</td>
+        <td>{{ sale.quantidade }}</td>
+        <td>{{ sale.preco }}</td>
+        <td>{{ sale.status }}</td>
+      </tr>
+      <tr *ngIf="sales.length === 0">
+        <td colspan="7" style="text-align: center;">Nenhuma venda encontrada.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

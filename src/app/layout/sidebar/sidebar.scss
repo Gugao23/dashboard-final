@@ -1,0 +1,70 @@
+.sidebar {
+  width: 250px;
+  background-color: #20232A; /* Cor escura do sidebar, similar à imagem */
+  color: #E0E0E0; /* Cor clara do texto, ajustada para melhor contraste */
+  height: 100vh;
+  padding-top: 30px; /* Aumentar padding superior para o logo */
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  position: fixed; /* Para manter o sidebar fixo na rolagem da página */
+  left: 0;
+  top: 0;
+}
+
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px; /* Mais espaço abaixo do logo */
+  margin-right: 130px;
+}
+
+.logo img {
+  max-width: 100px; /* Ajustar tamanho do logo */
+  /* filter: brightness(0) invert(1); Se o logo original não for branco */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px; /* Espaçamento entre itens */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #B0B0B0; /* Cor do texto do link não ativo, mais suave */
+  display: flex;
+  align-items: center;
+  padding: 12px 20px; /* Padding ajustado */
+  border-radius: 8px; /* Bordas mais arredondadas */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 15px;
+}
+
+nav ul li a:hover {
+  background-color: #333742; /* Fundo suave no hover */
+  color: #FFFFFF;
+}
+
+nav ul li.active a {
+  background-color: #3A3F4B; /* Cor de fundo do item ativo, um cinza mais claro que o sidebar */
+  color: #FFFFFF; /* Cor do texto do item ativo */
+  font-weight: 500;
+}
+
+nav ul li a i {
+  margin-right: 12px; /* Espaço entre ícone e texto */
+  font-size: 18px; /* Tamanho do ícone */
+  width: 20px; /* Largura fixa para alinhar texto */
+  text-align: center;
+}
+
+/* Ícones placeholder - idealmente usar uma biblioteca de ícones como Font Awesome ou Material Icons */
+.icon-dashboard::before { content: "\25A1"; } /* Quadrado vazado (□) */
+.icon-estoque::before { content: "\2261"; } /* Três linhas horizontais (≡) */
+.icon-clientes::before { content: "\1F465"; } /* Duas silhuetas (👥) */

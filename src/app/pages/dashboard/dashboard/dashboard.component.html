@@ -1,0 +1,26 @@
+<div class="dashboard-container">
+  <div class="summary-cards">
+    <app-card-summary [title]="'Produtos em estoque'" [value]="350" [colorClass]="'bg-blue'"></app-card-summary>
+    <app-card-summary [title]="'Produtos esgotando'" [value]="0" [colorClass]="'bg-red'"></app-card-summary>
+    <app-card-summary [title]="'Vendas do dia'" [value]="20" [colorClass]="'bg-green'"></app-card-summary>
+  </div>
+  <div class="sales-table-section">
+    <div class="table-header">
+      <h2>Vendas</h2>
+      <div class="total-box">
+        Total:
+        <span style="font-weight: bold; margin-left: 6px; display: block; display: flex; align-items: center;">
+          R$ {{ (salesTable?.totalPreco || 0) | number:'1.2-2':'pt-BR' }}
+          <p>{{ salesTable?.totalPreco }}</p>
+        </span>
+        
+      </div>
+    </div>
+    <app-sales-table-dashboard #salesTable></app-sales-table-dashboard>
+  </div>
+  <!-- <div class="sales-chart-section">
+      <h2>Vendas</h2>
+      <app-sales-chart></app-sales-chart>
+    </div> -->
+</div>
+

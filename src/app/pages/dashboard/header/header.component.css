@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px; /* Aumentar padding horizontal */
+  background-color: #ffffff;
+  border-bottom: 1px solid #EAECEE; /* Borda inferior mais sutil e clara */
+  height: 70px; /* Altura fixa para o header */
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 28px; /* Tamanho da fonte do título */
+  font-weight: 600; /* Peso da fonte */
+  color: #202020; /* Cor escura para o título */
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.user-menu span {
+  margin-right: 20px;
+  color: #566573; /* Cor do nome do admin */
+  font-size: 15px;
+}
+
+.user-menu a {
+  text-decoration: none;
+  color: #3498DB; /* Cor azul para o link 'Sair' */
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.user-menu a:hover {
+  text-decoration: underline;
+  color: #217DBB;
+}
+

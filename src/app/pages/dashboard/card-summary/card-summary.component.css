@@ -1,0 +1,49 @@
+.card-summary {
+  padding: 20px;
+  border-radius: 8px;
+  color: #FFFFFF; /* Texto branco para contraste com fundos coloridos */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px; /* Altura mínima para os cards */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  opacity: 0.9;
+}
+
+.card-value {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Cores de fundo específicas baseadas na classe passada como input */
+.bg-blue {
+  background-color: #F0F8FF; /* AliceBlue - um azul bem claro para "Produtos em estoque" */
+  color: #2C3E50; /* Texto escuro para contraste com fundo claro */
+}
+
+.bg-red {
+  background-color: #FFF0F0; /* Um rosa/vermelho bem claro para "Produtos esgotando" */
+  color: #C0392B; /* Texto vermelho escuro */
+}
+
+.bg-red .card-value {
+  color: #E74C3C; /* Valor em vermelho mais vibrante */
+}
+
+.bg-green {
+  background-color: #F0FFF0; /* Honeydew - um verde bem claro para "Vendas do dia" */
+  color: #27AE60; /* Texto verde escuro */
+}
+
+.bg-green .card-value {
+  color: #2ECC71; /* Valor em verde mais vibrante */
+}
+

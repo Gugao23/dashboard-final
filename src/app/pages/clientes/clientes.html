@@ -1,0 +1,10 @@
+<div class="Main">
+  <div class="sidebar-container">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="content-container">
+    <app-headere></app-headere>
+    <app-filter-bar (filterChange)="onFilterChange($event)"></app-filter-bar>
+    <app-client-table [filterCriteria]="filterCriteria"></app-client-table>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.client-table-container {
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333333;
+}
+
+thead tr {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  color: #495057;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e9ecef;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
