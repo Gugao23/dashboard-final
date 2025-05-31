@@ -1,59 +1,49 @@
 <div class="add-product-section">
-                <h2 class="section-title">Adicionar ao Estoque</h2>
-                <form id="addProductForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="productName">Nome do Produto</label>
-                            <input type="text" id="productName" name="productName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="category">Categoria</label>
-                            <select id="category" name="category" required>
-                                <option value="">Selecione uma categoria</option>
-                                <option value="Camiseta">Camiseta</option>
-                                <option value="Calça">Calça</option>
-                                <option value="Bermuda">Bermuda</option>
-                                <option value="Blusa">Blusa</option>
-                                <option value="Acessório">Acessório</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="size">Tamanho</label>
-                            <select id="size" name="size" required>
-                                <option value="">Selecione o tamanho</option>
-                                <option value="PP">PP</option>
-                                <option value="P">P</option>
-                                <option value="M">M</option>
-                                <option value="G">G</option>
-                                <option value="GG">GG</option>
-                                <option value="XG">XG</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="color">Cor</label>
-                            <select id="color" name="color" required>
-                                <option value="">Selecione a cor</option>
-                                <option value="Preto">Preto</option>
-                                <option value="Branco">Branco</option>
-                                <option value="Vermelho">Vermelho</option>
-                                <option value="Azul">Azul</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Cinza">Cinza</option>
-                                <option value="Rosa">Rosa</option>
-                                <option value="Amarelo">Amarelo</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="quantity">Quantidade</label>
-                            <input type="number" id="quantity" name="quantity" min="1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Preço</label>
-                            <div class="price-input">
-                                <input type="number" id="price" name="price" step="0.01" min="0" required>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="add-button">Adicionar Produto</button>
-                </form>
-            </div>
+  <h2 class="section-title">Adicionar ao Estoque</h2>
+  <form id="addProductForm">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="productName">Nome do Produto</label>
+        <select id="productName" name="productName" required [(ngModel)]="produto" (change)="onProdutoChange()" ngModel>
+          <option value="">Selecione um Produto</option>
+          <option value="CamisetaBasic">Camiseta Basic</option> <!--119,90R$ -->
+          <option value="CalçaVermelha">Calça Vermelha</option> <!--139,90R$ -->
+          <option value="CamisetaSwag">Camiseta Swag</option> <!--119,90R$ -->
+          <option value="MoletomOff">Moletom Off</option> <!--129,90R$ -->
+          <option value="MoletomVermelho">Moletom Vermelho</option> <!--149,90R$-->
+          <option value="MoletomPurpleJack">Moletom PurpleJack</option> <!--139,90R$ -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="category">Categoria</label>
+        <select id="category" name="category" required [(ngModel)]="categoria" ngModel>
+          <option value="">Selecione uma categoria</option>
+          <option value="Camiseta">Camiseta</option>
+          <option value="Calça">Calça</option>
+          <option value="Moletom">Moletom</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="size">Tamanho</label>
+        <select id="size" name="size" required [(ngModel)]="tamanho" ngModel>
+          <option value="">Selecione o tamanho</option>
+          <option value="P">P</option>
+          <option value="M">M</option>
+          <option value="G">G</option>
+          <option value="GG">GG</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantidade</label>
+        <input type="number" id="quantity" name="quantity" min="1" required [(ngModel)]="quantidade" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="price">Preço</label>
+        <div class="price-input">
+          <input type="number" id="price" name="price" step="0.01" min="0" required [(ngModel)]="preco" ngModel>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="add-button">Adicionar Produto</button>
+  </form>
+</div>
