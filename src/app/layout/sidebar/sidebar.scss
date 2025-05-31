@@ -1,3 +1,7 @@
+:host {
+  font-family: 'style', sans-serif
+}
+
 .sidebar {
   width: 250px;
   background-color: #20232A; /* Cor escura do sidebar, similar à imagem */
@@ -43,7 +47,7 @@ nav ul li a {
   padding: 12px 20px; /* Padding ajustado */
   border-radius: 8px; /* Bordas mais arredondadas */
   transition: background-color 0.2s ease, color 0.2s ease;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 nav ul li a:hover {

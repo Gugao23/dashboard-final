@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px; /* Aumentar padding horizontal */
+  padding: 40px 50px; /* Aumentar padding horizontal */
   background-color: #ffffff;
   border-bottom: 1px solid #EAECEE; /* Borda inferior mais sutil e clara */
   height: 70px; /* Altura fixa para o header */
@@ -10,9 +10,9 @@
 
 .header-title h1 {
   margin: 0;
-  font-size: 28px; /* Tamanho da fonte do título */
+  font-size: 40px; /* Tamanho da fonte do título */
   font-weight: 600; /* Peso da fonte */
-  color: #2C3E50; /* Cor escura para o título */
+  color: #000000; /* Cor escura para o título */
 }
 
 .user-menu {

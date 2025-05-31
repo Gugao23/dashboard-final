@@ -1,7 +1,7 @@
 <div class="Main">
     <div class="content-container"></div>
     <app-sidebar class="sidebar-container"></app-sidebar>
-<app-cards></app-cards>
-<app-tabela></app-tabela>
-<app-addform></app-addform>
+    <app-cards></app-cards>
+    <app-tabela></app-tabela>
+    <app-addform (produtoAdicionado)="atualizarTabela()"></app-addform>
 </div>

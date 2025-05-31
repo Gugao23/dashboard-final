@@ -1,0 +1,76 @@
+{
+  "produtosEstoque": [
+    {
+      "id": "1",
+      "produto": "CamisetaBasic",
+      "categoria": "Camiseta",
+      "tamanho": "P",
+      "quantidade": 41,
+      "preco": 119.99
+    },
+    {
+      "id": "2",
+      "produto": "CalçaVermelha",
+      "categoria": "Calça",
+      "tamanho": "M",
+      "quantidade": 48,
+      "preco": 139.99
+    },
+    {
+      "id": "3",
+      "produto": "CamisetaSwag",
+      "categoria": "Camiseta",
+      "tamanho": "G",
+      "quantidade": 5,
+      "preco": 119.99
+    },
+    {
+      "id": "4",
+      "produto": "CamisetaSwag",
+      "categoria": "Camiseta",
+      "tamanho": "P",
+      "quantidade": 3,
+      "preco": 119.99
+    },
+    {
+      "id": "5",
+      "produto": "CalçaVermelha",
+      "categoria": "Calça",
+      "tamanho": "GG",
+      "quantidade": 45,
+      "preco": 139.99
+    },
+    {
+      "id": "6",
+      "produto": "MoletomPurpleJack",
+      "categoria": "Moletom",
+      "tamanho": "M",
+      "quantidade": 6,
+      "preco": 139.99
+    },
+    {
+      "id": "7",
+      "produto": "CamisetaBasic",
+      "categoria": "Camiseta",
+      "tamanho": "M",
+      "quantidade": 10,
+      "preco": 119.99
+    },
+    {
+      "id": 8,
+      "produto": "MoletomOff",
+      "categoria": "Moletom",
+      "tamanho": "G",
+      "quantidade": 7,
+      "preco": 129.99
+    },
+    {
+      "id": 9,
+      "produto": "MoletomVermelho",
+      "categoria": "Moletom",
+      "tamanho": "GG",
+      "quantidade": 55,
+      "preco": 149.99
+    }
+  ]
+}

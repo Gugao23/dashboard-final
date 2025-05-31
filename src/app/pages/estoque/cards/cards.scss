@@ -1,3 +1,8 @@
+:host {
+  font-family: 'style', sans-serif
+}
+
+
 .main-content {
             flex: 1;
             padding: 30px;
@@ -9,14 +14,15 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         .header h1 {
              margin: 0;
-             font-size: 28px; /* Tamanho da fonte do título */
+             font-size: 40px; /* Tamanho da fonte do título */
              font-weight: 600; /* Peso da fonte */
             color: #202020; /* Cor escura para o título */
+
         }
 
         .header-actions {
@@ -50,7 +56,8 @@
             padding: 20px;
             color: white;
             position: relative;
-
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+           
         }
 
         .stat-card.compras {
@@ -59,7 +66,7 @@
             padding: 20px;
             color: white;
             position: relative;
-
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
         }
 
         .stat-card.receita {
@@ -68,7 +75,7 @@
             padding: 20px;
             color: white;
             position: relative;
-
+             box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
         }
 
         .stat-card.warning {
@@ -77,6 +84,7 @@
             padding: 20px;
             color: white;
             position: relative;
+            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
         }
 
         .stat-card .icon {
