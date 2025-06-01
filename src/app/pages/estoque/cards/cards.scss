@@ -1,105 +1,109 @@
 :host {
-  font-family: 'style', sans-serif
+    font-family: 'style', sans-serif
 }
 
 
 .main-content {
-            flex: 1;
-            padding: 30px;
-            display: block;
-        }
+    flex: 1;
+    padding: 30px;
+    display: block;
+}
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding: 40px 20px;
-        }
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 40px 20px;
+}
 
-        .header h1 {
-             margin: 0;
-             font-size: 40px; /* Tamanho da fonte do título */
-             font-weight: 600; /* Peso da fonte */
-            color: #202020; /* Cor escura para o título */
+.header h1 {
+    margin: 0;
+    font-size: 40px;
+    /* Tamanho da fonte do título */
+    font-weight: 600;
+    /* Peso da fonte */
+    color: #202020;
+    /* Cor escura para o título */
 
-        }
+}
 
-        .header-actions {
-            display: flex;
-            gap: 15px;
-            color: #666;
-        }
+.header-actions {
+    display: flex;
+    gap: 15px;
+    color: #666;
+}
 
-        .header-actions span {
-            cursor: pointer;
-        }
+.header-actions span {
+    cursor: pointer;
+}
 
-        .header-actions a{
-        text-decoration: none;
-        color: #3498DB; /* Cor azul para o link 'Sair' */
-         font-weight: 500;
-            font-size: 15px;
-        }
-        /* Stats Cards */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-            box-shadow: 10px 10px 10px 10px color rgb(0, 0, 0);
-        }
+.header-actions a {
+    text-decoration: none;
+    color: #3498DB;
+    /* Cor azul para o link 'Sair' */
+    font-weight: 500;
+    font-size: 15px;
+}
 
-        .stat-card.box {
-            background: #9c9c9c;
-            border-radius: 8px;
-            padding: 20px;
-            color: white;
-            position: relative;
-            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-           
-        }
+/* Stats Cards */
+.stats-grid {
+    display: flex;
+    justify-content: center; // Centraliza os cards horizontalmente  gap: 400px; /* Espaço entre os cards */
+    gap: 300px;
+    margin-bottom: 40px;
+    align-items: stretch;
+}
 
-        .stat-card.compras {
-            background: #800505;
-            border-radius: 8px;
-            padding: 20px;
-            color: white;
-            position: relative;
-            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-        }
+.stat-card {
+    flex: 1 1 0;
+    min-width: 320px;
+    max-width: 100%;
+    background: #9c9c9c;
+    border-radius: 12px;
+    padding: 40px 0 40px 0;
+    color: white;
+    position: relative;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .stat-card.receita {
-            background: #02680b;
-            border-radius: 8px;
-            padding: 20px;
-            color: white;
-            position: relative;
-             box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-        }
+.stat-card .icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
 
-        .stat-card.warning {
-            background: #b8860b;
-            border-radius: 8px;
-            padding: 20px;
-            color: white;
-            position: relative;
-            box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.1);
-        }
+.stat-card .value {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
 
-        .stat-card .icon {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 10px;
-        }
+.stat-card .label {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-right: 0;
+}
 
-        .stat-card .value {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
+.stat-card.warning {
+    background: #b8860b;
+}
 
-        .stat-card .label {
-            font-size: 12px;
-            opacity: 0.9;
-        }
+.stat-card.receita {
+    background: #02680b;
+}
+
+.estoque-verde {
+  background: #02680b !important;
+}
+.estoque-amarelo {
+  background: #b8860b !important;
+}
+.estoque-vermelho {
+  background: #c0392b !important;
+}

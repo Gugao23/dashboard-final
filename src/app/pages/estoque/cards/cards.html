@@ -1,33 +1,52 @@
- <div class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <h1>Estoque</h1>
-                <div class="header-actions">
-                    <span>Admin</span>
-                    <a href="#">Sair</a>
-                </div>
-            </div>
+<div class="main-content">
+  <!-- Header do painel, mostra o título e ações do usuário -->
+  <div class="header">
+    <h1>Estoque</h1>
+    <div class="header-actions">
+      <span>Admin</span>
+      <a href="http://localhost:4200/">Sair</a>
+    </div>
+  </div>
 
-            <!-- Stats Cards -->
-            <div class="stats-grid">
-                <div class="stat-card box">
-                    <div class="icon">📦</div>
-                    <div class="value">Total</div>
-                    <div class="label">de produtos</div>
-                </div>
-                <div class="stat-card warning">
-                    <div class="icon">⚠️</div>
-                    <div class="value">Produtos</div>
-                    <div class="label">esgotando</div>
-                </div>
-                <div class="stat-card compras">
-                    <div class="icon">🛒</div>
-                    <div class="value">Vendas</div>
-                    <div class="label">no dia</div>
-                </div>
-                <div class="stat-card receita">
-                    <div class="icon">💰</div>
-                    <div class="value">Receita</div>
-                    <div class="label">no mês</div>
-                </div>
-            </div>
+  <!-- Stats Cards: cards de estatísticas do estoque -->
+  <div class="stats-grid">
+    <!-- Card de total de produtos -->
+    <div class="stat-card box">
+      <div class="icon">📦</div>
+      <div class="value">Total: {{ totalProdutos }}</div>
+      <div class="label">de produtos</div>
+    </div>
+    <!-- Card de produtos esgotando, cor e conteúdo mudam conforme o estoqueStatus -->
+    <div class="stat-card"
+         [ngClass]="{
+           'estoque-verde': estoqueStatus === 'verde',      
+           'estoque-amarelo': estoqueStatus === 'amarelo',  
+           'estoque-vermelho': estoqueStatus === 'vermelho' 
+         }">
+      <!-- Ícone muda conforme o status -->
+      <div class="icon">
+        <ng-container [ngSwitch]="estoqueStatus">
+          <span *ngSwitchCase="'verde'">✅</span>      <!-- Verde: check -->
+          <span *ngSwitchCase="'amarelo'">⚠️</span>   <!-- Amarelo: alerta -->
+          <span *ngSwitchCase="'vermelho'">❌</span>   <!-- Vermelho: X -->
+        </ng-container>
+      </div>
+      <!-- Texto principal do card muda conforme o status -->
+      <div class="value">
+        <ng-container [ngSwitch]="estoqueStatus">
+          <span *ngSwitchCase="'verde'">Estoque Cheio</span>
+          <span *ngSwitchCase="'amarelo'">Produtos</span>
+          <span *ngSwitchCase="'vermelho'">Estoque Vazio</span>
+        </ng-container>
+      </div>
+      <!-- Texto secundário do card muda conforme o status -->
+      <div class="label">
+        <ng-container [ngSwitch]="estoqueStatus">
+          <span *ngSwitchCase="'verde'">em estoque</span>
+          <span *ngSwitchCase="'amarelo'">esgotando</span>
+          <span *ngSwitchCase="'vermelho'">em estoque</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
