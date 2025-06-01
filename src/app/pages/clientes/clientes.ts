@@ -13,9 +13,9 @@ import { HeadereComponent } from "./header/header.component";
   styleUrls: ['./clientes.scss']
 })
 export class ClientesComponent {
-  filterCriteria = { nome: '', cidade: '', estado: '' };
+  filterCriteria = { nome: '', email: '' };
 
-  onFilterChange(filtro: { nome: string; cidade: string; estado: string }) {
+  onFilterChange(filtro: { nome: string; email: string }) {
     this.filterCriteria = filtro;
   }
 }

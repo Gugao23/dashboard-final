@@ -1,13 +1,33 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 export interface Client {
   id: number;
   nome: string;
   email: string;
   telefone: string;
-  cidade: string;
-  estado: string;
+  rua: string;
+  numero: string;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  password: string;
+}
+
+export interface DadosPessoais {
+  id: string;
+  userId: string;
+  nome: string;
+  cpf: string;
+  telefone: string;
+  dataNascimento: string;
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento: string;
 }
 
 @Component({
@@ -17,57 +37,70 @@ export interface Client {
   templateUrl: './client-table.component.html',
   styleUrls: ['./client-table.component.css']
 })
-export class ClientTableComponent implements OnChanges {
-  @Input() filterCriteria: { nome?: string; cidade?: string; estado?: string } = {};
+export class ClientTableComponent implements OnInit, OnChanges {
+  @Input() filterCriteria: { nome?: string; email?: string } = {};
 
-  allClients: Client[] = [
-    { id: 1, nome: 'João Silva', email: 'joaosilva@gmail.com', telefone: '(11) 92100-1234', cidade: 'São Paulo', estado: 'SP' },
-  { id: 2, nome: 'Anna Paula', email: 'anapau@gmail.com', telefone: '(21) 92904-5848', cidade: 'Rio de Janeiro', estado: 'RJ' },
-  { id: 3, nome: 'João Pedro', email: 'jotape@gmail.com', telefone: '(68) 95505-0580', cidade: 'Rio Branco', estado: 'AC' },
-  { id: 4, nome: 'Pedro Henrique', email: 'ph123433@gmail.com', telefone: '(11) 91456-7131', cidade: 'São Paulo', estado: 'SP' },
-  { id: 5, nome: 'Maria Oliveira', email: 'maria.o@gmail.com', telefone: '(31) 98877-6655', cidade: 'Belo Horizonte', estado: 'MG' },
-  { id: 6, nome: 'Carlos Souza', email: 'carlos.souza@outlook.com', telefone: '(41) 97766-5544', cidade: 'Curitiba', estado: 'PR' },
-  { id: 7, nome: 'Fernanda Lima', email: 'fernanda.lima@yahoo.com', telefone: '(51) 96655-4433', cidade: 'Porto Alegre', estado: 'RS' },
-  { id: 8, nome: 'Paula Lima', email: 'paulalima@gmail.com', telefone: '(11) 92100-1234', cidade: 'São Paulo', estado: 'SP' },
-  { id: 9, nome: 'Karla Torres', email: 'karlatrr@gmail.com', telefone: '(21) 92904-5848', cidade: 'Rio de Janeiro', estado: 'RJ' },
-  { id: 10, nome: 'Matheus Pereira', email: 'mathpereira@gmail.com', telefone: '(68) 92225-0580', cidade: 'Rio Branco', estado: 'AC' },
-  { id: 11, nome: 'Henrique Vaz', email: 'Henriquevaz@gmail.com', telefone: '(11) 91103-2331', cidade: 'São Paulo', estado: 'SP' },
-  { id: 12, nome: 'Olivia Lemes', email: 'olemes@gmail.com', telefone: '(31) 98837-5555', cidade: 'Belo Horizonte', estado: 'MG' },
-  { id: 13, nome: 'Karen Moreira', email: 'moreiraka@outlook.com', telefone: '(11) 94766-1224', cidade: 'São Paulo', estado: 'SP' },
-  { id: 14, nome: 'Felipe Melo', email: 'felipeml@yahoo.com', telefone: '(11) 97670-4433', cidade: 'São Paulo', estado: 'SP' },
-  { id: 15, nome: 'Lucas Martins', email: 'lucasmartins@gmail.com', telefone: '(21) 98888-1234', cidade: 'Niterói', estado: 'RJ' },
-  { id: 16, nome: 'Bruna Costa', email: 'brunacosta@gmail.com', telefone: '(31) 98765-4321', cidade: 'Belo Horizonte', estado: 'MG' },
-  { id: 17, nome: 'Ricardo Alves', email: 'ricardoalves@gmail.com', telefone: '(41) 91234-5678', cidade: 'Curitiba', estado: 'PR' },
-  { id: 18, nome: 'Juliana Souza', email: 'julianasouza@gmail.com', telefone: '(51) 93456-7890', cidade: 'Porto Alegre', estado: 'RS' },
-  { id: 19, nome: 'Gabriel Rocha', email: 'gabrielrocha@gmail.com', telefone: '(68) 90000-1111', cidade: 'Rio Branco', estado: 'AC' },
-  { id: 20, nome: 'Patrícia Mendes', email: 'patriciamendes@gmail.com', telefone: '(11) 95555-6666', cidade: 'São Paulo', estado: 'SP' }
-  ];
+  private apiUrl = 'http://localhost:3000'; // Ajuste a URL conforme necessário
 
+  allClients: Client[] = [];
   filteredClients: Client[] = [];
 
-  constructor() {
-    this.filteredClients = this.allClients;
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.loadClients();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.applyFilters();
   }
 
-  applyFilters(): void {
-    const nomeFiltro = (this.filterCriteria.nome || '').toLowerCase();
-    const cidadeFiltro = (this.filterCriteria.cidade || '').toLowerCase();
-    const estadoFiltro = (this.filterCriteria.estado || '').toUpperCase();
+  async loadClients(): Promise<void> {
+    try {
+      // Buscar usuários e dados pessoais
+      const users = await this.http.get<User[]>(`${this.apiUrl}/users`).toPromise();
+      const dadosPessoais = await this.http.get<DadosPessoais[]>(`${this.apiUrl}/dadosPessoais`).toPromise();
 
-    this.filteredClients = this.allClients.filter(client => {
-      const matchNome = !nomeFiltro || client.nome.toLowerCase().includes(nomeFiltro);
-      const matchCidade = !cidadeFiltro || client.cidade.toLowerCase().includes(cidadeFiltro);
-      const matchEstado = !estadoFiltro || client.estado.toUpperCase() === estadoFiltro;
-      return matchNome && matchCidade && matchEstado;
+      // Combinar os dados
+      this.allClients = this.combineUserData(users || [], dadosPessoais || []);
+      this.filteredClients = [...this.allClients];
+      this.applyFilters();
+
+    } catch (error) {
+      console.error('Erro ao carregar clientes:', error);
+      // Em caso de erro, manter array vazio
+      this.allClients = [];
+      this.filteredClients = [];
+    }
+  }
+
+  private combineUserData(users: User[], dadosPessoais: DadosPessoais[]): Client[] {
+    return dadosPessoais.map((dados, index) => {
+      const user = users.find(u => u.id === dados.userId);
+      return {
+        id: index + 1, // Manter ID numérico sequencial como no original
+        nome: dados.nome,
+        email: user?.email || '',
+        telefone: dados.telefone,
+        rua: dados.rua,
+        numero: dados.numero
+      };
     });
   }
 
-  getUniqueStates(): string[] {
-    const states = this.allClients.map(client => client.estado);
-    return Array.from(new Set(states)).sort();
+  applyFilters(): void {
+    const nomeFiltro = (this.filterCriteria.nome || '').toLowerCase();
+    const emailFiltro = (this.filterCriteria.email || '').toLowerCase();
+
+    this.filteredClients = this.allClients.filter(client => {
+      const matchNome = !nomeFiltro || client.nome.toLowerCase().includes(nomeFiltro);
+      const matchEmail = !emailFiltro || client.email.toLowerCase().includes(emailFiltro);
+      return matchNome && matchEmail;
+    });
+  }
+
+  getUniqueRuas(): string[] {
+    const ruas = this.allClients.map(client => client.rua);
+    return Array.from(new Set(ruas)).sort();
   }
 }

@@ -1,15 +1,6 @@
 <div class="filter-bar">
   <input type="text" placeholder="Filtrar por nome" [(ngModel)]="nome" (ngModelChange)="atualizaFiltro()" />
-  <input type="text" placeholder="Filtrar por cidade" [(ngModel)]="cidade" (ngModelChange)="atualizaFiltro()" />
-  <select [(ngModel)]="estado" (ngModelChange)="atualizaFiltro()">
-    <option value="" selected>Todos os Estados</option>
-    <option value="SP">SP</option>
-    <option value="RJ">RJ</option>
-    <option value="AC">AC</option>
-    <option value="MG">MG</option>
-    <option value="PR">PR</option>
-    <option value="RS">RS</option>
-  </select>
+  <input type="text" placeholder="Filtrar por email" [(ngModel)]="email" (ngModelChange)="atualizaFiltro()" />
   <button class="search-button" (click)="atualizaFiltro()">
     <i class="icon-search"></i>
   </button>

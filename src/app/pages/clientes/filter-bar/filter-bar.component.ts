@@ -11,15 +11,13 @@ import { CommonModule } from '@angular/common';
 })
 export class FilterBarComponent {
   nome = '';
-  cidade = '';
-  estado = '';
-  @Output() filterChange = new EventEmitter<{ nome: string; cidade: string; estado: string }>();
+  email = '';
+  @Output() filterChange = new EventEmitter<{ nome: string; email: string }>();
 
   atualizaFiltro() {
     this.filterChange.emit({
       nome: this.nome,
-      cidade: this.cidade,
-      estado: this.estado
+      email: this.email
     });
   }
 }

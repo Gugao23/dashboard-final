@@ -7,21 +7,12 @@
   gap: 15px; /* Espaçamento entre os elementos do filtro */
 }
 
-.filter-bar input[type="text"],
-.filter-bar select {
+.filter-bar input[type="text"] {
   padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 14px;
-}
-
-.filter-bar input[type="text"] {
   flex-grow: 1; /* Faz os inputs de texto ocuparem o espaço disponível */
-}
-
-.filter-bar select {
-  min-width: 150px; /* Largura mínima para o select de estado */
-  background-color: white;
 }
 
 .search-button {
@@ -44,4 +35,3 @@
   content: "\1F50D"; /* Código unicode para uma lupa, pode variar o visual */
   font-size: 16px;
 }
-
