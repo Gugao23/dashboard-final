@@ -57,11 +57,11 @@ export class SalesChartComponent implements OnInit {
 
   carregarDados(): void {
     this.produtosVendidos = this.dadosVendas[this.periodoAtivo];
-    
+
     // Calcular totais
     this.totalProdutos = this.produtosVendidos.reduce((sum, item) => sum + item.quantidade, 0);
     this.totalFaturado = this.produtosVendidos.reduce((sum, item) => sum + item.valor, 0);
-    
+
     // Atualizar gráfico
     this.atualizarGrafico();
   }

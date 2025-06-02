@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CardSummaryComponent } from '../card-summary/card-summary.component';
 import { SalesTableDashboardComponent } from '../sales-table-dashboard/sales-table-dashboard.component';
 import { SalesChartComponent } from '../sales-chart/sales-chart.component';
@@ -18,7 +18,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
   // Total de produtos em estoque (soma das quantidades de todos os produtos)
   totalProdutosEstoque: number = 0;
 
@@ -35,12 +35,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.carregarTotalProdutos();
   }
 
-  // Após a view ser inicializada, atualiza o total de vendas
-  ngAfterViewInit(): void {
-    // Pequeno delay para garantir que a tabela já carregou os dados
-    setTimeout(() => this.atualizarTotalVendas(), 500);
-  }
-
   // Busca todos os produtos do estoque e soma as quantidades
   carregarTotalProdutos() {
     this.http.get<any[]>('http://localhost:3000/produtosEstoque').subscribe(produtos => {
@@ -49,13 +43,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // Conta quantos clientes únicos existem na lista de vendas
+
+// Conta quantas vendas diferentes ocorreram com base no ID
   atualizarTotalVendas() {
     if (this.salesTable && this.salesTable.sales) {
-      // Extrai o nome do cliente de cada venda (campo "status" é o nome do usuário)
-      const nomes = this.salesTable.sales.map(sale => sale.status?.trim()).filter(Boolean);
-      // Cria um Set para garantir unicidade e conta o tamanho
-      this.totalVendas = Array.from(new Set(nomes)).length;
+      // Extrai os IDs das vendas e remove duplicatas
+      const idsUnicos = new Set(this.salesTable.sales.map(sale => sale.id));
+      this.totalVendas = idsUnicos.size;
     }
   }
+
 }

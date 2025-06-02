@@ -15,10 +15,7 @@
         </span>
       </div>
     </div>
-    <app-sales-table-dashboard #salesTable (ngAfterViewInit)="atualizarTotalVendas()" (ngDoCheck)="atualizarTotalVendas()"></app-sales-table-dashboard>
+    <!-- Atualização reativa com evento personalizado -->
+    <app-sales-table-dashboard #salesTable (vendasCarregadas)="atualizarTotalVendas()"></app-sales-table-dashboard>
   </div>
-  <!-- <div class="sales-chart-section">
-      <h2>Vendas</h2>
-      <app-sales-chart></app-sales-chart>
-    </div> -->
 </div>
