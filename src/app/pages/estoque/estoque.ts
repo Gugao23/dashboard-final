@@ -11,8 +11,10 @@ import { SidebarComponent } from "../../layout/sidebar/sidebar";
   styleUrl: './estoque.scss'
 })
 export class Estoque {
+  // Referência para o componente da tabela de produtos
   @ViewChild(TabelaComponent) tabela!: TabelaComponent;
 
+  // Método chamado para atualizar a tabela de produtos (por exemplo, após adicionar um novo produto)
   atualizarTabela() {
     if (this.tabela) {
       this.tabela.carregarProdutos();

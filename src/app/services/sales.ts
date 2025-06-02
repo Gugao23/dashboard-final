@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// Interfaces para tipar os dados das compras
 interface CompraItem {
   produtoId: string;
   nomeProduto: string;
@@ -25,6 +26,7 @@ interface Compra {
   status: string;
 }
 
+// Interface para o item de venda que será exibido na tabela
 export interface SaleItem {
   id: string;
   produto: string;
@@ -32,17 +34,18 @@ export interface SaleItem {
   cor: string;
   quantidade: number;
   preco: string;
-  status: string;
+  status: string; // Aqui é o nome do usuário
 }
 
 @Injectable({
-  providedIn: 'root', // ✅ Aqui está a correção
+  providedIn: 'root', // Serviço disponível globalmente
 })
 export class SalesService {
   private apiUrl = 'http://localhost:3000/compras';
 
   constructor(private http: HttpClient) {}
 
+  // Busca as compras e transforma em SaleItem para a tabela
   getSalesItems(): Observable<SaleItem[]> {
     return this.http.get<Compra[]>(this.apiUrl).pipe(
       map(compras => {
@@ -57,7 +60,7 @@ export class SalesService {
               cor: item.cor || 'N/A',
               quantidade: item.quantidade,
               preco: `R$ ${item.preco.toFixed(2).replace('.', ',')}`,
-              status: compra.nomeUsuario
+              status: compra.nomeUsuario // Aqui é o nome do cliente
             });
           });
         });

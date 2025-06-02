@@ -15,6 +15,14 @@
       "tamanho": "G",
       "quantidade": 34,
       "preco": 119.99
+    },
+    {
+      "id": 3,
+      "produto": "MoletomOff",
+      "categoria": "Moletom",
+      "tamanho": "P",
+      "quantidade": 33,
+      "preco": 129.99
     }
   ]
 }

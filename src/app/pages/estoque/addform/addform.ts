@@ -11,12 +11,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./addform.scss']
 })
 export class AddformComponent {
+  // Campos do formulário
   produto = '';
   categoria = '';
   tamanho = '';
   quantidade: number | null = null;
   preco: number | null = null;
 
+  // Informações pré-definidas de produtos para auto-preencher categoria e preço
   produtosInfo: any = {
     'CamisetaBasic': { categoria: 'Camiseta', preco: 119.99 },
     'CalçaVermelha': { categoria: 'Calça', preco: 139.99 },
@@ -26,10 +28,13 @@ export class AddformComponent {
     'MoletomPurpleJack': { categoria: 'Moletom', preco: 139.99 }
   };
 
+  // Evento emitido quando um produto é adicionado ou atualizado
   @Output() produtoAdicionado = new EventEmitter<void>();
 
+  // Injeta o serviço HttpClient para requisições HTTP
   constructor(private http: HttpClient) {}
 
+  // Atualiza categoria e preço automaticamente ao selecionar um produto
   onProdutoChange() {
     const info = this.produtosInfo[this.produto];
     if (info) {
@@ -41,18 +46,21 @@ export class AddformComponent {
     }
   }
 
+  // Envia o formulário para adicionar ou atualizar produto no estoque
   onSubmit() {
+    // Busca todos os produtos para verificar se já existe o mesmo produto e tamanho
     this.http.get<any[]>('http://localhost:3000/produtosEstoque').subscribe(produtos => {
-      // Busca produto pelo nome E tamanho
+      // Procura produto existente pelo nome e tamanho
       const existente = produtos.find(
         p => p.produto === this.produto && p.tamanho === this.tamanho
       );
       if (existente) {
-        // Atualiza a quantidade do produto existente
+        // Se já existe, apenas atualiza a quantidade
         const novaQuantidade = (existente.quantidade || 0) + (this.quantidade || 0);
         this.http.patch(`http://localhost:3000/produtosEstoque/${existente.id}`, {
           quantidade: novaQuantidade
         }).subscribe(() => {
+          // Limpa o formulário e emite evento
           this.produto = '';
           this.categoria = '';
           this.tamanho = '';
@@ -61,7 +69,7 @@ export class AddformComponent {
           this.produtoAdicionado.emit();
         });
       } else {
-        // Gera novo id incremental, garantindo que não há duplicidade
+        // Se não existe, cria novo produto com id incremental
         const ids = produtos.map(p => typeof p.id === 'number' ? p.id : parseInt(p.id, 10)).filter(id => !isNaN(id));
         const novoId = ids.length > 0 ? Math.max(...ids) + 1 : 1;
 
@@ -75,6 +83,7 @@ export class AddformComponent {
         };
 
         this.http.post('http://localhost:3000/produtosEstoque', novoProduto).subscribe(() => {
+          // Limpa o formulário e emite evento
           this.produto = '';
           this.categoria = '';
           this.tamanho = '';
